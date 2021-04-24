@@ -1,7 +1,7 @@
 from db.run_sql import run_sql
 from models.brewer import Brewer
 from models.beer import Beer
-import respositories.brewer_repository as brewer_repository
+import repositories.brewer_repository as brewer_repository
 
 
 def save(beer):
