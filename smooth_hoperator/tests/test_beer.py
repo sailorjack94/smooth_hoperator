@@ -18,3 +18,6 @@ class TestBeer(unittest.TestCase):
 
     def test_product_has_buy_price(self):
         self.assertEqual(2.65, self.beer3.buy_price)
+
+    def test_product_has_sell_price(self):
+        self.assertEqual(3.99, self.beer1.sell_price)
