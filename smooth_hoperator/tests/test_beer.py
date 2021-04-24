@@ -21,3 +21,6 @@ class TestBeer(unittest.TestCase):
 
     def test_product_has_sell_price(self):
         self.assertEqual(3.99, self.beer1.sell_price)
+
+    def test_product_has_brewer(self):
+        self.assertEqual(self.brewer1, self.beer3.brewer)
