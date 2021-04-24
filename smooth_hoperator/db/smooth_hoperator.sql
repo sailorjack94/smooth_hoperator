@@ -1,5 +1,6 @@
-DROP TABLE IF EXISTS brewers;
 DROP TABLE IF EXISTS beers;
+DROP TABLE IF EXISTS brewers;
+
 
 CREATE TABLE brewers (
     id SERIAL PRIMARY KEY,
@@ -13,7 +14,7 @@ CREATE TABLE beers (
     description TEXT,
     style VARCHAR(255),
     stock INT,
-    buy_cost INT,
-    sell_price INT,
+    buy_price FLOAT,
+    sell_price FLOAT,
     brewer_id INT REFERENCES brewers(id) ON DELETE CASCADE
 );
