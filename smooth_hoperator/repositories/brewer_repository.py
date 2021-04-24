@@ -22,7 +22,7 @@ def select_all():
     return brewers
 
 def select(id):
-    brewer = []
+    brewer = None
     sql = "SELECT * FROM brewers WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)

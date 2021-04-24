@@ -23,6 +23,16 @@ def select_all():
         beers.append(beer)
     return beers
 
+def select(id):
+    beer = None
+    sql = 'SELECT * FROM beers WHERE id = %s'
+    values = [id]
+    result = run_sql(sql, values)
+
+    if result is not None:
+        brewer = brewer_repository.select(result['brewer_id'])
+        beer = Beer(result['name'], result['description'], result['style'], result['stock'], result['buy_price'], result['sell_price'], brewer, result['id'])
+    return beer
 
 def delete_all():
     sql = "DELETE FROM beers"
