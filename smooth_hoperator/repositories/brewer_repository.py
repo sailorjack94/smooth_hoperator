@@ -2,6 +2,8 @@ from db.run_sql import run_sql
 from models.brewer import Brewer
 from models.beer import Beer 
 
+import repositories.beer_repository as beer_repository
+
 def save(brewer):
     sql = "INSERT INTO brewers (name, description) VALUES (%s, %s) RETURNING *"
     values = [brewer.name, brewer.description]
@@ -25,7 +27,7 @@ def select(id):
     brewer = None
     sql = "SELECT * FROM brewers WHERE id = %s"
     values = [id]
-    result = run_sql(sql, values)
+    result = run_sql(sql, values)[0]
 
     if result is not None:
         brewer = Brewer(result['name'], result['description'], result['id'])

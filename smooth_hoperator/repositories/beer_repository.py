@@ -14,11 +14,11 @@ def save(beer):
     
 def select_all():
     beers = []
-    sql = 'SELECT * FROM beers ORDER BY id'
+    sql = "SELECT * FROM beers"
     results = run_sql(sql)
 
     for row in results:
-        brewer = brewer.respository.select(row['brewer.id'])
+        brewer = brewer_repository.select(row['brewer_id'])
         beer = Beer(row['name'], row['description'], row['style'], row['stock'], row['buy_price'], row['sell_price'], brewer, row['id'])
         beers.append(beer)
     return beers
@@ -27,7 +27,7 @@ def select(id):
     beer = None
     sql = 'SELECT * FROM beers WHERE id = %s'
     values = [id]
-    result = run_sql(sql, values)
+    result = run_sql(sql, values)[0]
 
     if result is not None:
         brewer = brewer_repository.select(result['brewer_id'])
