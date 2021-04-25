@@ -18,3 +18,13 @@ def brewers():
 def show_brewer(id):
     brewer = brewer_repository.select(id)
     return render_template('brewers/show.html', brewer = brewer)
+
+# Add Brewer Page
+@brewer_blueprint.route("/brewers/new", method = ["GET"])
+def new():
+    return render_template("brewers/new.html")
+
+@brewer_blueprint.route('/brewers', methods = ["POST"])
+def new_brewer():
+    brewers = []
+    return redirect('/brewers') 
