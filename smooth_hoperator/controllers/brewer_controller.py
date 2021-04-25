@@ -7,7 +7,14 @@ from models.brewer import Brewer
 
 brewer_blueprint = Blueprint('brewer', __name__)
 
+# Returns all brewers on one page. Base for Brewer Managment Page.
 @brewer_blueprint.route('/brewers')
 def brewers():
     brewers = brewer_repository.select_all()
     return render_template('brewers/index.html', all_brewers = brewers)
+
+# Returns all detail on selected brewers. User for edit brewer page.
+@brewer_blueprint.route('/brewers/<id>', methods = ["GET"])
+def show_brewer(id):
+    brewer = brewer_repository.select(id)
+    return render_template('brewers/show.html', brewer = brewer)

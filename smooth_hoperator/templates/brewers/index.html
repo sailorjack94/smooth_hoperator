@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+{% for brewer in all_brewers %}
+<div>
+    <div>
+        <a href="/brewers/{{brewer.id}}">{{brewer.name}}</a>
+        <div>
+            Name: {{brewer.name}}
+        </div>
+        <div>
+            Description: {{brewer.description}}
+        </div>
+    </div>
+</div>
+
+{%endfor%}
+
+
+
+
+
+
+
+
+{% endblock %}

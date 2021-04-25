@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 
 from controllers.beer_controller import beer_blueprint
+from controllers.brewer_controller import brewer_blueprint
 
 app = Flask(__name__)
 
