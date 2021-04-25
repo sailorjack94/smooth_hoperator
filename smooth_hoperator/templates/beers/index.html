@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+{% for beer in all_beers %}
+<div>
+    <div>
+        <a href="/beers/{{beer.id}}">{{beer.name}}</a>
+        <div>
+            Name: {{beer.name}}
+        </div>
+        <div>
+            Description: {{beer.description}}
+        </div>
+        <div>
+            Brewer: {{beer.brewer.name}}
+        </div>
+        <div>
+            Stock: {{beer.stock}}
+        </div>
+    </div>
+</div>
+
+{%endfor%}
+
+
+
+
+
+
+
+
+{% endblock %}
