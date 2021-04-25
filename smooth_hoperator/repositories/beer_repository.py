@@ -38,7 +38,7 @@ def delete_all():
     sql = "DELETE FROM beers"
     run_sql(sql)
 
-    
+
 
 def select_all_by_brewer(brewer_id):
     beers = []
@@ -51,3 +51,11 @@ def select_all_by_brewer(brewer_id):
         beer = Beer(row['name'], row['description'], row['style'], row['stock'], row['buy_price'], row['sell_price'], brewer, row['id'])
         beers.append(beer)
     return beers
+
+
+
+
+def update(beer):
+    sql = "UPDATE beers SET (name, description, style, stock, buy_price, sell_price, brewer_id) = (%s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
+    values = [beer.name, beer.description, beer.style, beer.stock, beer.buy_price, beer.sell_price, beer.brewer.id, beer.id]
+    run_sql = (sql, values)
