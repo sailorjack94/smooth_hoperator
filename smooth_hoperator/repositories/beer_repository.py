@@ -37,3 +37,17 @@ def select(id):
 def delete_all():
     sql = "DELETE FROM beers"
     run_sql(sql)
+
+    
+
+def select_all_by_brewer(brewer_id):
+    beers = []
+    sql = "SELECT * FROM beers WHERE brewer_id = %s"
+    values = [brewer_id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        brewer = brewer_repository.select(row['brewer_id'])
+        beer = Beer(row['name'], row['description'], row['style'], row['stock'], row['buy_price'], row['sell_price'], brewer, row['id'])
+        beers.append(beer)
+    return beers
