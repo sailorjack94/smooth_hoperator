@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 from controllers.beer_controller import beer_blueprint
 from controllers.brewer_controller import brewer_blueprint

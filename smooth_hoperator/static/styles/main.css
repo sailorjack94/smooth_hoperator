@@ -1,0 +1,16 @@
+body {
+    font: normal 10px roboto, arial, helvetica;
+}
+
+div.logo-center {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
