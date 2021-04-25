@@ -20,11 +20,14 @@ def show_brewer(id):
     return render_template('brewers/show.html', brewer = brewer)
 
 # Add Brewer Page
-@brewer_blueprint.route("/brewers/new", method = ["GET"])
-def new():
+@brewer_blueprint.route('/brewers/new')
+def new_brewer():
     return render_template("brewers/new.html")
 
 @brewer_blueprint.route('/brewers', methods = ["POST"])
-def new_brewer():
-    brewers = []
+def add_new_brewer():
+    name    = request.form['name']
+    description = request.form['description']
+    brewer = Brewer(name, description)
+    brewer_repository.save(brewer)
     return redirect('/brewers') 
