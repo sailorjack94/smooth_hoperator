@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<form action="/beers" method="post">
+
+    <div>
+      <label for="name">Beer Name: </label>
+      <input type="text" id="name" name="name" placeholder="Beer Name" required autofocus>
+    </div>
+  
+    <div>
+      <label for="description">Description: </label>
+      <input type="textarea" id="description" name="description" placeholder="Description" required autofocus>
+    </div>
+
+    <div>
+        <label for="style">Beer Style: </label>
+        <input type='text' id="style" name="style" placeholder="Beer Stly Style" required autofocus>
+    </div>
+  
+    <div>
+        <label for="stock">Initial Stock: </label>
+        <input type="number" min='1' id='stock' name="stock" placeholder="Initial Stock" required>
+    </div>
+
+    <div>
+        <label for="buy_price">Buy Price: </label>
+        <input type="number" min='0' step='0.01' id='buy_price' name="buy_price" placeholder="Buy Price" required>
+    </div>
+
+    <div>
+        <label for="sell_price">Sell Price: </label>
+        <input type='number' min='0' step='0.01' id='sell_price' name="sell_price" placeholder="Sell Price" required>
+    </div>
+
+    <div>
+        <label for="brewer">Brewer: </label>
+        <select id="brewer" name="brewer_id">
+          {% for brewer in all_brewers %}
+            <option value="{{ brewer.id }}">{{ brewer.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    
+    <button type="submit">Add Beer</button>
+  
+  </form>
+
+
+
+
+
+
+{% endblock %}

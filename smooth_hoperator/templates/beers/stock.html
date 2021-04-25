@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3 style="text-align:center"><a href="/beers/new">Add New Beer</a></h3>
 
 {% for beer in all_beers %}
 <div>
@@ -10,12 +9,11 @@
         <div>
             Name: {{beer.name}}
         </div>
-        <div>
-            Description: {{beer.description}}
-        </div>
+
         <div>
             Brewer: {{beer.brewer.name}}
         </div>
+        
         <div>
             Stock: {{beer.stock}}
         </div>
@@ -23,8 +21,6 @@
 </div>
 
 {%endfor%}
-
-
 
 
 
