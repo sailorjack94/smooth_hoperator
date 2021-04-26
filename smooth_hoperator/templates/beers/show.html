@@ -35,7 +35,9 @@
         <br><br><br>
         </div>
         <div>
-            <button>Delete Product</button>
+            <form class="delete-select" action="/beers/{{beer.id}}/delete" method = "POST">
+            <button class = 'delete-button'>Delete Product</button>
+            </form>
         </div>
 </div>
 

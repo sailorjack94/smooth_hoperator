@@ -50,3 +50,8 @@ def edit_beer(id):
     beer = beer_repository.select(id)
     brewers = brewer_repository.select_all()
     return render_template('beers/edit.html', beer=beer, all_brewers = brewers)
+
+@beer_blueprint.route('/beers/<id>/delete', methods = ["POST"])
+def delete_beer(id):
+    beer_repository.delete(id)
+    return redirect('/beers')
