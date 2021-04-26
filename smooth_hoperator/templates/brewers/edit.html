@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<form class='inventory-container' action="/brewers/{{brewer.id}}" method="post">
+
+    <div>
+        <label for="name">Brewer Name: </label>
+        <input type="text" id="name" name="name" value="{{brewer.name}}" required>
+        <br><br>
+    </div>
+
+    <div>
+        <label for="description">Description: </label>
+        <input type="text" id="description" name="description" value="{{brewer.description}}" required>
+        <br><br>
+    </div>
+
+    <button type="submit">Save Changes</button>
+
+</form>
+
+{% endblock %}

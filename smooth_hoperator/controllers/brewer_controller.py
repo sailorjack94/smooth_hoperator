@@ -36,3 +36,17 @@ def add_new_brewer():
 def delete_brewer(id):
     brewer_repository.delete(id)
     return redirect('/brewers')
+
+@brewer_blueprint.route('/brewers/<id>/edit', methods=['GET'])
+def edit_brewer(id):
+    brewer = brewer_repository.select(id)
+    return render_template('brewers/edit.html', brewer = brewer)
+
+@brewer_blueprint.route("/brewers/<id>", methods=['POST'])
+def update_brewer(id):
+    name    = request.form['name']
+    description = request.form['description']
+    brewer  = brewer_repository.select(brewer_id)
+    brewer = Brewer(name, description, int(id))
+    brewer_repository.update(brewer)
+    return redirect('/brewers')
