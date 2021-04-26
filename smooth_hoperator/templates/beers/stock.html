@@ -2,11 +2,12 @@
 {% block content %}
 
 <nav style="text-align:left" class='sort-by-selector'>
-    <h3>Sort By: </h3>
+    <h4>Sort By: </h4>
     <ul class='sort-by'>
         <li><a href="/stock/sortn">Name</a></li><br>
         <li><a href="/stock/sortb">Brewery</a></li><br>
         <li><a href="/stock/sortc">Cost</a></li><br>
+        <li><a href="/stock/sorts">Stock Level</a></li>
     </ul>
 </nav>
 <nav>
@@ -27,11 +28,14 @@
 
         <div>
             <b>Stock Level:</b> {{beer.stock}}
-            {% if beer.stock < 3 %}
+            {% if beer.stock >3 %}
+            <p class ='in-stock'>IN STOCK!</p>
+            {%endif%}
+            {% if beer.stock > 0 and beer.stock <=3 %}
                 <p class ='low-stock'>LOW STOCK WARNING!</p>
             {% endif %}
             {%if beer.stock == 0 %}
-                <p class='out-of-stock'>Out of Stock</p>
+                <p class='out-of-stock'>OUT OF STOCK!</p>
             {% endif %}
         </div>
     </div>

@@ -14,9 +14,13 @@ div.logo-center {
 
 }
 
-.sort-selector {
+.sort-by-selector {
     display: flex;
     justify-content: center;
+}
+
+ul.sort-by {
+    display: grid;
 }
 
 .main-nav {
@@ -41,8 +45,22 @@ div.logo-center {
     padding: 5%;
 }
 
-nav.sort-by-selector {
+/* nav.sort-by-selector {
     display: grid;
     justify-content:center;
+} */
 
+p.low-stock {
+    color: orange;
+    font-weight: bold;
+}
+
+p.out-of-stock {
+    font-weight: bold;
+    color: red;
+}
+
+p.in-stock {
+    font-weight: bold;
+    color:green;
 }
