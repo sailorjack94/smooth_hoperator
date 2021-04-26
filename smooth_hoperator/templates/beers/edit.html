@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<form action="/beers/{{beer.id}}" method="post">
+
+    <div>
+      <label for="name">Beer Name: </label>
+      <input type="text" id="name" name="name" value={{beer.name}} required>
+    </div>
+  
+    <div>
+      <label for="description">Description: </label>
+      <input type="text" id="description" name="description" value="{{beer.description}}" required>
+    </div>
+
+    <div>
+        <label for="style">Beer Style: </label>
+        <input type='text' id="style" name="style" value={{beer.style}} required>
+    </div>
+  
+    <div>
+        <label for="stock">Stock Level: </label>
+        <input type="number" min='0' id='stock' name="stock" value={{beer.stock}} required>
+    </div>
+
+    <div>
+        <label for="buy_price">Buy Price: </label>
+        <input type="number" min='0' step='0.01' id='buy_price' name="buy_price" value={{beer.buy_price}} required>
+    </div>
+
+    <div>
+        <label for="sell_price">Sell Price: </label>
+        <input type='number' min='0' step='0.01' id='sell_price' name="sell_price" value={{beer.sell_price}} required>
+    </div>
+
+    <div>
+        <label for="brewer">Brewer: </label>
+        <select id="brewer" name="brewer_id">
+          {% for brewer in all_brewers %}
+            <option value="{{ brewer.id }}">{{ brewer.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    
+    <button type="submit">Submit Changes</button>
+  
+  </form>
+
+  {% endblock %}

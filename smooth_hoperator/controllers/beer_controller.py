@@ -1,3 +1,4 @@
+import pdb
 from flask import Flask, Blueprint
 from flask import render_template, request, redirect
 import repositories.beer_repository as beer_repository
@@ -42,3 +43,10 @@ def add_new_beer():
 def stock():
     beers = beer_repository.select_all()
     return render_template('beers/stock.html', all_beers = beers)
+
+@beer_blueprint.route('/beers/<id>/edit')
+def edit_beer(id):
+
+    beer = beer_repository.select(id)
+    brewers = brewer_repository.select_all()
+    return render_template('beers/edit.html', beer=beer, all_brewers = brewers)

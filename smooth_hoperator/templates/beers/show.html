@@ -6,26 +6,28 @@
     <a href="/beers/{{beer.id}}">{{beer.name}}</a>
     <table style='width:100%'>
         <tr>
-            
+
         </tr>
     
     </table>
     <div>
-        Name: {{beer.name}}
+        <b>Name:</b> {{beer.name}}
     </div>
 
     <div>
-        Brewer: {{beer.brewer.name}}
+        <b>Brewer:</b> {{beer.brewer.name}}
     </div>
 
     <div>
-        Stock: {{beer.stock}}
+        <b>Stock:</b> {{beer.stock}}
     </div>
     <div>
-        Buy Price: {{beer.buy_price}}
+        <b>Buy Price:</b> {{beer.buy_price}}
     </div>
     <div>
-        Sell Price: {{beer.sell_price}}
+        <b>Sell Price:</b> {{beer.sell_price}}
+        <br>
+        <br>
     </div>
     <div>
         <a href="/beers/{{beer.id}}/edit">Edit Beer</a>
