@@ -44,12 +44,26 @@ def stock():
     beers = beer_repository.select_all()
     return render_template('beers/stock.html', all_beers = beers)
 
-@beer_blueprint.route('/beers/<id>/edit')
+@beer_blueprint.route('/beers/<id>/edit', methods=['GET'])
 def edit_beer(id):
-
     beer = beer_repository.select(id)
     brewers = brewer_repository.select_all()
     return render_template('beers/edit.html', beer=beer, all_brewers = brewers)
+
+@beer_blueprint.route("/beers/<id>", methods=['POST'])
+def update_beer(id):
+    name    = request.form['name']
+    description = request.form['description']
+    style   = request.form['style']
+    stock = int(request.form['stock'])
+    buy_price = float(request.form['buy_price'])
+    sell_price = float(request.form['sell_price'])
+    brewer_id = int(request.form['brewer'])
+    brewer  = brewer_repository.select(brewer_id)
+    beer = Beer(name, description, style, stock, buy_price, sell_price, brewer, int(id))
+    beer_repository.update(beer)
+    return redirect('/beers')
+
 
 @beer_blueprint.route('/beers/<id>/delete', methods = ["POST"])
 def delete_beer(id):

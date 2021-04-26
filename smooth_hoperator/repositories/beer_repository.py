@@ -11,10 +11,11 @@ def save(beer):
     id = results[0]['id']
     beer.id = id
     return beer
+
     
 def select_all():
     beers = []
-    sql = "SELECT * FROM beers"
+    sql = "SELECT * FROM beers ORDER BY name ASC"
     results = run_sql(sql)
 
     for row in results:
@@ -62,5 +63,5 @@ def select_all_by_brewer(brewer_id):
 
 def update(beer):
     sql = "UPDATE beers SET (name, description, style, stock, buy_price, sell_price, brewer_id) = (%s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
-    values = [beer.name, beer.description, beer.style, beer.stock, beer.buy_price, beer.sell_price, beer.brewer.id, beer.id]
-    run_sql = (sql, values)
+    values = [beer.name, beer.description, beer.style, beer.stock, beer.buy_price,beer.sell_price, beer.brewer.id, beer.id]
+    run_sql(sql, values)

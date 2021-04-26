@@ -18,12 +18,13 @@
         <option value="name">Cost</option>
     </select>
   </div>
+  <p style="text-align:center">Click on a Beer to update Stock, or Sell Price.</p>
   </nav>
 
 {% for beer in all_beers %}
 <section class='inventory-section'>
     <div class='inventory-container'>
-        <a href="/beers/{{beer.id}}">{{beer.name}}</a>
+        <a href="/beers/{{beer.id}}/edit">{{beer.name}}</a>
         <div>
             <b>Name:</b>{{beer.name}}
         </div>
