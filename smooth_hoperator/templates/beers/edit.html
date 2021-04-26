@@ -45,7 +45,11 @@
         <label for="brewer">Brewer: </label>
         <select id="brewer" name="brewer">
             {% for brewer in all_brewers %}
-            <option value="{{ brewer.id }}">{{ brewer.name }}</option>
+            <option value="{{ brewer.id }}"
+            {% if beer.brewer.id == brewer.id %} selected = "selected" {%endif%}>
+            {{ brewer.name }}
+
+            </option>
             {% endfor %}
         </select>
         <br><br><br>

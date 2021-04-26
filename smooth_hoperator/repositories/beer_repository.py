@@ -24,6 +24,36 @@ def select_all():
         beers.append(beer)
     return beers
 
+def select_all_by_stock():
+    beers = []
+    sql = "SELECT * FROM beers ORDER BY stock DESC"
+    results = run_sql(sql)
+    for row in results:
+        brewer = brewer_repository.select(row['brewer_id'])
+        beer = Beer(row['name'], row['description'], row['style'], row['stock'], row['buy_price'], row['sell_price'], brewer, row['id'])
+        beers.append(beer)
+    return beers
+
+def select_all_by_cost():
+    beers = []
+    sql = "SELECT * FROM beers ORDER BY sell_price ASC"
+    results = run_sql(sql)
+    for row in results:
+        brewer = brewer_repository.select(row['brewer_id'])
+        beer = Beer(row['name'], row['description'], row['style'], row['stock'], row['buy_price'], row['sell_price'], brewer, row['id'])
+        beers.append(beer)
+    return beers
+
+def select_all_order_by_brewer():
+    beers = []
+    sql = "SELECT * FROM beers ORDER BY brewer_id ASC"
+    results = run_sql(sql)
+    for row in results:
+        brewer = brewer_repository.select(row['brewer_id'])
+        beer = Beer(row['name'], row['description'], row['style'], row['stock'], row['buy_price'], row['sell_price'], brewer, row['id'])
+        beers.append(beer)
+    return beers
+
 def select(id):
     beer = None
     sql = 'SELECT * FROM beers WHERE id = %s'
@@ -34,6 +64,21 @@ def select(id):
         brewer = brewer_repository.select(result['brewer_id'])
         beer = Beer(result['name'], result['description'], result['style'], result['stock'], result['buy_price'], result['sell_price'], brewer, result['id'])
     return beer
+
+def select_by_brewer(brewer_id):
+    beers = []
+    sql = "SELECT * FROM beers WHERE brewer_id = %s"
+    values = [brewer_id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        brewer = brewer_repository.select(row['brewer_id'])
+        beer = Beer(row['name'], row['description'], row['style'], row['stock'], row['buy_price'], row['sell_price'], brewer, row['id'] )
+        beers.append(beer)
+    return beers
+
+
+
 
 def delete_all():
     sql = "DELETE FROM beers"

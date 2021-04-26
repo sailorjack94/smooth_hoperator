@@ -64,3 +64,7 @@ p.in-stock {
     font-weight: bold;
     color:green;
 }
+
+form.new-beer-form {
+    text-align: center;
+}

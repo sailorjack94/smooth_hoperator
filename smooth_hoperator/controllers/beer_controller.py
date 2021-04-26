@@ -12,7 +12,27 @@ beer_blueprint = Blueprint('beer', __name__)
 @beer_blueprint.route('/beers')
 def beers():
     beers = beer_repository.select_all()
-    return render_template('beers/index.html', all_beers = beers)
+    return render_template('beers/stock.html', all_beers = beers)
+
+@beer_blueprint.route('/beers/name')
+def beers_by_name():
+    return redirect('/beers')
+
+
+@beer_blueprint.route('/beers/stock')
+def beers_by_stock():
+    beers = beer_repository.select_all_by_stock()
+    return render_template('beers/stock.html', all_beers = beers)
+
+@beer_blueprint.route('/beers/cost')
+def beers_by_cost():
+    beers = beer_repository.select_all_by_cost()
+    return render_template('beers/stock.html', all_beers = beers)
+
+@beer_blueprint.route('/beers/brewer')
+def beers_by_brewer():
+    beers = beer_repository.select_all_order_by_brewer()
+    return render_template('beers/stock.html', all_beers = beers)
 
 # Returns all details for a selected beer. Use for edit beer page.
 @beer_blueprint.route('/beers/<id>', methods = ['GET'])
@@ -49,7 +69,7 @@ def add_new_beer():
 @beer_blueprint.route('/stock')
 def stock():
     beers = beer_repository.select_all()
-    return render_template('beers/stock.html', all_beers = beers)
+    return render_template('beers/index.html', all_beers = beers)
 
 @beer_blueprint.route('/beers/<id>/edit', methods=['GET'])
 def edit_beer(id):
