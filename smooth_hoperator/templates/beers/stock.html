@@ -1,24 +1,48 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<!-- <h3>Sort By: </h3> -->
+<!-- <nav>
+    <ul class='sort-by'>
+        <li><a href="/stock/sortn">Name</a></li>
+        <li><a href="/stock/sortb">Brewery</a></li>
+        <li><a href="/stock/sortc">Cost</a></li>
+    </ul>
+</nav> -->
+<nav>
+<div class='sort-selector'>
+    <label for="sort-by">Sort By: </label>
+    <select id="sort-by" name="sort-by">
+        <option value="name">Name</option>
+        <option value="name">Brewery</option>
+        <option value="name">Cost</option>
+    </select>
+  </div>
+  </nav>
 
 {% for beer in all_beers %}
-<div>
-    <div>
+<section class='inventory-section'>
+    <div class='inventory-container'>
         <a href="/beers/{{beer.id}}">{{beer.name}}</a>
         <div>
-            Name: {{beer.name}}
+            <b>Name:</b>{{beer.name}}
         </div>
 
         <div>
-            Brewer: {{beer.brewer.name}}
+            <b>Brewer:</b> {{beer.brewer.name}}
         </div>
-        
+
         <div>
-            Stock: {{beer.stock}}
+            <b>Stock Level:</b> {{beer.stock}}
+            {% if beer.stock < 3 %}
+                <p class ='low-stock'>LOW STOCK WARNING!</p>
+            {% endif %}
+            {%if beer.stock == 0 %}
+                <p class='out-of-stock'>Out of Stock</p>
+            {% endif %}
         </div>
     </div>
-</div>
+</section>
 
 {%endfor%}
 

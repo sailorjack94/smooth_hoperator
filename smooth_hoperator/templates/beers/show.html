@@ -2,13 +2,35 @@
 {% block content %}
 
 
+<div class='inventory-container'>
+    <a href="/beers/{{beer.id}}">{{beer.name}}</a>
+    <table style='width:100%'>
+        <tr>
+            
+        </tr>
+    
+    </table>
+    <div>
+        Name: {{beer.name}}
+    </div>
 
-Individual Beer Page
+    <div>
+        Brewer: {{beer.brewer.name}}
+    </div>
 
-
-
-
-
+    <div>
+        Stock: {{beer.stock}}
+    </div>
+    <div>
+        Buy Price: {{beer.buy_price}}
+    </div>
+    <div>
+        Sell Price: {{beer.sell_price}}
+    </div>
+    <div>
+        <a href="/beers/{{beer.id}}/edit">Edit Beer</a>
+        </div>
+</div>
 
 
 
