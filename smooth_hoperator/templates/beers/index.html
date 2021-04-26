@@ -2,25 +2,24 @@
 {% block content %}
 
 <h3 style="text-align:center"><a href="/beers/new">Add New Beer</a></h3>
-
 {% for beer in all_beers %}
-<div>
-    <div>
+    <div class='inventory-container'>
         <a href="/beers/{{beer.id}}">{{beer.name}}</a>
         <div>
-            Name: {{beer.name}}
+            <b>Name:</b> {{beer.name}}
         </div>
         <div>
-            Description: {{beer.description}}
+            <b>Description:</b> {{beer.description}}
         </div>
         <div>
-            Brewer: {{beer.brewer.name}}
+            <b>Brewer:</b> {{beer.brewer.name}}
         </div>
         <div>
-            Stock: {{beer.stock}}
+            <b>Stock:</b> {{beer.stock}}
         </div>
     </div>
 </div>
+
 
 {%endfor%}
 
