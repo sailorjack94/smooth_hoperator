@@ -2,12 +2,30 @@
 {% block content %}
 
 
+<div class='inventory-container'>
+    <a href="/brewers/{{brewer.id}}">{{brewer.name}}</a>
+    <table style='width:100%'>
+        <tr>
 
-Individual Brewer Page.
+        </tr>
+    
+    </table>
+    <div>
+        <b>Name:</b> {{brewer.name}}
+    </div>
 
+    <div>
+        <b>Description:</b> {{brewer.description}}
+        <br>
+        <br>
+    </div>
 
-
-
+        <div>
+            <form class="delete-select" action="/brewers/{{brewer.id}}/delete" method = "POST">
+            <button class = 'delete-button'>Delete Brewer</button>
+            </form>
+        </div>
+</div>
 
 
 

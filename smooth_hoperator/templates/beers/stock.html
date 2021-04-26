@@ -1,23 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- <h3>Sort By: </h3> -->
-<!-- <nav>
+<nav style="text-align:left" class='sort-by-selector'>
+    <h3>Sort By: </h3>
     <ul class='sort-by'>
-        <li><a href="/stock/sortn">Name</a></li>
-        <li><a href="/stock/sortb">Brewery</a></li>
-        <li><a href="/stock/sortc">Cost</a></li>
+        <li><a href="/stock/sortn">Name</a></li><br>
+        <li><a href="/stock/sortb">Brewery</a></li><br>
+        <li><a href="/stock/sortc">Cost</a></li><br>
     </ul>
-</nav> -->
+</nav>
 <nav>
-<div class='sort-selector'>
-    <label for="sort-by">Sort By: </label>
-    <select id="sort-by" name="sort-by">
-        <option value="name">Name</option>
-        <option value="name">Brewery</option>
-        <option value="name">Cost</option>
-    </select>
-  </div>
   <p style="text-align:center">Click on a Beer to update Stock, or Sell Price.</p>
   </nav>
 

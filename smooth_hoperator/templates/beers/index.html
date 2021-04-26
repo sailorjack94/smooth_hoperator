@@ -2,7 +2,7 @@
 {% block content %}
 
 <h3 style="text-align:center"><a href="/beers/new">Add New Beer</a></h3>
-<h5 style = 'text-align:center'>Click on a Beer to see more information and view the edit page.</h5>
+<h5 style = 'text-align:center'>Click on a Beer to see more information and access the edit page.</h5>
 {% for beer in all_beers %}
     <div class='inventory-container'>
         <a href="/beers/{{beer.id}}">{{beer.name}}</a>

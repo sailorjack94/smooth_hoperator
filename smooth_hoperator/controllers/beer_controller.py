@@ -62,7 +62,7 @@ def update_beer(id):
     brewer  = brewer_repository.select(brewer_id)
     beer = Beer(name, description, style, stock, buy_price, sell_price, brewer, int(id))
     beer_repository.update(beer)
-    return redirect('/beers')
+    return redirect('/stock')
 
 
 @beer_blueprint.route('/beers/<id>/delete', methods = ["POST"])

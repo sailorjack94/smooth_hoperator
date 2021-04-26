@@ -31,3 +31,8 @@ def add_new_brewer():
     brewer = Brewer(name, description)
     brewer_repository.save(brewer)
     return redirect('/brewers') 
+
+@brewer_blueprint.route('/brewers/<id>/delete', methods = ["POST"])
+def delete_brewer(id):
+    brewer_repository.delete(id)
+    return redirect('/brewers')

@@ -37,6 +37,12 @@ div.logo-center {
     grid-row: 1;
     margin:auto;
     text-align: center;
-    font-size: 20px;
+    font-size: 15px;
     padding: 5%;
+}
+
+nav.sort-by-selector {
+    display: grid;
+    justify-content:center;
+
 }
