@@ -1,39 +1,48 @@
-{% extends 'base.html' %}
-{% block content %}
+{%extends 'base.html'%}
+{%block content%}
 
-<h3 style="text-align:center"><a href="/beers/new">Add New Beer</a></h3>
-<h5 style = 'text-align:center'>Click on a Beer to see more information and access the edit page.</h5>
+<a href="/beers"><h3 style='text-align:center;'>Add New Beer</h3></a>
+<br><br>
+
 {% for beer in all_beers %}
+<section class='inventory-section'>
     <div class='inventory-container'>
-        <a href="/beers/{{beer.id}}">{{beer.name}}</a>
+        <a href="/beers/{{beer.id}}/edit">{{beer.name}}</a>
         <div>
-            <b>Name:</b> {{beer.name}}
+            <b>Name:</b>{{beer.name}}
         </div>
-        <div>
-            <b>Description:</b> {{beer.description}}
-        </div>
+
         <div>
             <b>Brewer:</b> {{beer.brewer.name}}
         </div>
-        <div>
-            <b>Stock:</b> {{beer.stock}}
-        </div>
-        <div>
-            <form class="delete-select" action="/beers/{{beer.id}}/delete" method = "POST">
-            <button class = 'delete-button'>Delete Product</button>
-            </form>
-        </div>
-    </div>
-</div>
 
+        <div>
+            <b>Stock Level:</b> {{beer.stock}}
+            </div>
+            <div>
+                <b>Buy Price:</b> {{beer.buy_price}}
+            </div>
+            <div>
+                <b>Sell Price:</b> {{beer.sell_price}}
+            </div>
+            <div>
+                <b>Markup:</b> {{(beer.sell_price - beer.buy_price)*100}}%
+                <br>
+                <br>
+            </div>
+            <div>
+                <a href="/beers/{{beer.id}}/edit">Edit Beer</a>
+                <br>
+                <br>
+                </div>
+                <div>
+                    <form class="delete-select" action="/beers/{{beer.id}}/delete" method = "POST">
+                    <button class = 'delete-button'>Delete Product</button>
+                    </form>
+                </div>
+    </div>
+</section>
 
 {%endfor%}
-
-
-
-
-
-
-
 
 {% endblock %}

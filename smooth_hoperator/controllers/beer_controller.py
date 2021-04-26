@@ -39,6 +39,13 @@ def add_new_beer():
     beer_repository.save(beer)
     return redirect('/beers') 
 
+# @beer_blueprint.route('/stock', methods=['GET'])
+# def sort_by_query_string():
+#     query = request.query_string
+#     if "sortn" in query:
+#         return query
+
+
 @beer_blueprint.route('/stock')
 def stock():
     beers = beer_repository.select_all()

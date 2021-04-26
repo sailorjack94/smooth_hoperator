@@ -46,6 +46,7 @@ def edit_brewer(id):
 def update_brewer(id):
     name    = request.form['name']
     description = request.form['description']
+    brewer_id = id
     brewer  = brewer_repository.select(brewer_id)
     brewer = Brewer(name, description, int(id))
     brewer_repository.update(brewer)
