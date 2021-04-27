@@ -31,7 +31,6 @@ ul.sort-by {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
-    border: 2px solid black;
 }
 
 .inventory-container {
