@@ -80,7 +80,8 @@ def add_new_beer():
 @beer_blueprint.route('/stock')
 def stock():
     beers = beer_repository.select_all()
-    return render_template('beers/index.html', all_beers = beers)
+    total_value = beer_repository.total_value()
+    return render_template('beers/index.html', all_beers = beers, total_value = total_value)
 
 @beer_blueprint.route('/beers/<id>/edit', methods=['GET'])
 def edit_beer(id):
