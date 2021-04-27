@@ -110,3 +110,8 @@ def update(beer):
     sql = "UPDATE beers SET (name, description, style, stock, buy_price, sell_price, brewer_id) = (%s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [beer.name, beer.description, beer.style, beer.stock, beer.buy_price,beer.sell_price, beer.brewer.id, beer.id]
     run_sql(sql, values)
+
+def total_value():
+    value = 0
+    sql= "SELECT SUM(buy_price * stock) FROM beers"
+    value = run_sql(sql)

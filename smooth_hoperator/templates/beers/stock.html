@@ -10,9 +10,21 @@
         <li><a href="/beers/stock">Stock Level</a></li>
     </ul>
 </nav>
-<nav>
+<form action="POST">
+<div style="text-align:center;">
+    <label for="brewer-filter">Filter by Brewer: </label>
+    <select id="brewer-filter" name="brewer_id">
+        {% for brewer in all_brewers %}
+        <option value="{{ brewer.id }}">{{ brewer.name }}</option>
+        {% endfor %}
+    </select><br><br>
+    <button type="submit">Apply Filter</button>
+</div>
+</form>
+<div>
   <p style="text-align:center">Click on a Beer to update Stock, or Sell Price.</p>
-  </nav>
+  
+</div>
 
 {% for beer in all_beers %}
 <section class='inventory-section'>

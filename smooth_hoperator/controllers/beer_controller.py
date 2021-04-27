@@ -12,7 +12,8 @@ beer_blueprint = Blueprint('beer', __name__)
 @beer_blueprint.route('/beers')
 def beers():
     beers = beer_repository.select_all()
-    return render_template('beers/stock.html', all_beers = beers)
+    brewers = brewer_repository.select_all()
+    return render_template('beers/stock.html', all_beers = beers, all_brewers=brewers)
 
 @beer_blueprint.route('/beers/name')
 def beers_by_name():
