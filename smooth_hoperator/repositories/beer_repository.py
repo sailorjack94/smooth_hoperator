@@ -2,6 +2,7 @@ from db.run_sql import run_sql
 from models.brewer import Brewer
 from models.beer import Beer
 import repositories.brewer_repository as brewer_repository
+import pdb
 
 
 def save(beer):
@@ -115,3 +116,4 @@ def total_value():
     value = 0
     sql= "SELECT SUM(buy_price * stock) FROM beers"
     value = run_sql(sql)
+    return value[0]
