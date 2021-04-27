@@ -32,7 +32,7 @@
         <label for="buy_price">Buy Price: </label>
         <input type="number" min='0' step='0.01' id='buy_price' name="buy_price" value={{beer.buy_price}} readonly
             required>
-            <br><br>
+        <br><br>
     </div>
 
     <div>
@@ -45,9 +45,8 @@
         <label for="brewer">Brewer: </label>
         <select id="brewer" name="brewer">
             {% for brewer in all_brewers %}
-            <option value="{{ brewer.id }}"
-            {% if beer.brewer.id == brewer.id %} selected = "selected" {%endif%}>
-            {{ brewer.name }}
+            <option value="{{ brewer.id }}" {% if beer.brewer.id==brewer.id %} selected="selected" {%endif%}>
+                {{ brewer.name }}
 
             </option>
             {% endfor %}

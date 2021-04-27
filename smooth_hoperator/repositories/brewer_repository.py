@@ -1,16 +1,18 @@
 from db.run_sql import run_sql
 from models.brewer import Brewer
-from models.beer import Beer 
+from models.beer import Beer
 
 import repositories.beer_repository as beer_repository
+
 
 def save(brewer):
     sql = "INSERT INTO brewers (name, description) VALUES (%s, %s) RETURNING *"
     values = [brewer.name, brewer.description]
     results = run_sql(sql, values)
     id = results[0]['id']
-    brewer.id = id 
+    brewer.id = id
     return brewer
+
 
 def select_all():
     brewers = []
@@ -23,6 +25,7 @@ def select_all():
 
     return brewers
 
+
 def select(id):
     brewer = None
     sql = "SELECT * FROM brewers WHERE id = %s"
@@ -33,14 +36,17 @@ def select(id):
         brewer = Brewer(result['name'], result['description'], result['id'])
     return brewer
 
+
 def delete_all():
     sql = "DELETE FROM brewers"
     run_sql(sql)
 
+
 def delete(id):
     sql = "DELETE FROM brewers WHERE id = %s"
     values = [id]
-    run_sql(sql,values)
+    run_sql(sql, values)
+
 
 def update(brewer):
     sql = "UPDATE brewers SET (name, description) = (%s, %s) WHERE id = %s"

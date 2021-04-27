@@ -8,13 +8,16 @@ app = Flask(__name__)
 app.register_blueprint(beer_blueprint)
 app.register_blueprint(brewer_blueprint)
 
+
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/query', methods=['GET'])
-def get_query_string():
-    return request.query_string
+# WIP - Query string test
+# @app.route('/query', methods=['GET'])
+# def get_query_string():
+#     return request.query_string
+
 
 if __name__ == '__main__':
     app.run(debug=True)

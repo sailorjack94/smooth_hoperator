@@ -1,35 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/main.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Smooth Hoperator</title>
 </head>
+
 <body>
     <header>
         <div class='logo-center'>
-       <img style="max-width:25%; max-height:25%;" src="{{url_for('static', filename='hops.jpeg')}}"/>
-    </div>
-    <div> 
-        <ul  class='main-nav'>
-            <a  class = 'nav-button' href='/'><h3>Home</h3></a>
-            <a  class = 'nav-button' href = '/beers'><h3>Stock Listing</h3></a>
-            <a  class = 'nav-button' href ='/stock'><h3>Beer Management</h3></a>
-            <a  class = 'nav-button' href = '/brewers'><h3>Brewer Management</h3></a>
-        </ul>
-<br>
-<br><br>
-<br>
-<br>
+            <img style="max-width:25%; max-height:25%;" src="{{url_for('static', filename='hops.jpeg')}}" />
+        </div>
+        <div>
+            <ul class='main-nav'>
+                <a class='nav-button' href='/'>
+                    <h3>Home</h3>
+                </a>
+                <a class='nav-button' href='/beers'>
+                    <h3>Stock Listing</h3>
+                </a>
+                <a class='nav-button' href='/stock'>
+                    <h3>Beer Management</h3>
+                </a>
+                <a class='nav-button' href='/brewers'>
+                    <h3>Brewer Management</h3>
+                </a>
+            </ul>
+            <br>
+            <br><br>
+            <br>
+            <br>
 
-    </div>
+        </div>
     </header>
     {% block content %}
-    
+
     {% endblock %}
-    
+
 </body>
+
 </html>

@@ -6,14 +6,15 @@ import pdb
 
 
 def save(beer):
-    sql = "INSERT INTO beers (name, description, style, stock,  buy_price, sell_price, brewer_id) VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING *" 
-    values = [beer.name, beer.description, beer.style, beer.stock, beer.buy_price, beer.sell_price, beer.brewer.id]
+    sql = "INSERT INTO beers (name, description, style, stock,  buy_price, sell_price, brewer_id) VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING *"
+    values = [beer.name, beer.description, beer.style, beer.stock,
+              beer.buy_price, beer.sell_price, beer.brewer.id]
     results = run_sql(sql, values)
     id = results[0]['id']
     beer.id = id
     return beer
 
-    
+
 def select_all():
     beers = []
     sql = "SELECT * FROM beers ORDER BY name ASC"
@@ -21,9 +22,11 @@ def select_all():
 
     for row in results:
         brewer = brewer_repository.select(row['brewer_id'])
-        beer = Beer(row['name'], row['description'], row['style'], row['stock'], row['buy_price'], row['sell_price'], brewer, row['id'])
+        beer = Beer(row['name'], row['description'], row['style'], row['stock'],
+                    row['buy_price'], row['sell_price'], brewer, row['id'])
         beers.append(beer)
     return beers
+
 
 def select_all_by_stock():
     beers = []
@@ -31,9 +34,11 @@ def select_all_by_stock():
     results = run_sql(sql)
     for row in results:
         brewer = brewer_repository.select(row['brewer_id'])
-        beer = Beer(row['name'], row['description'], row['style'], row['stock'], row['buy_price'], row['sell_price'], brewer, row['id'])
+        beer = Beer(row['name'], row['description'], row['style'], row['stock'],
+                    row['buy_price'], row['sell_price'], brewer, row['id'])
         beers.append(beer)
     return beers
+
 
 def select_all_by_cost():
     beers = []
@@ -41,9 +46,11 @@ def select_all_by_cost():
     results = run_sql(sql)
     for row in results:
         brewer = brewer_repository.select(row['brewer_id'])
-        beer = Beer(row['name'], row['description'], row['style'], row['stock'], row['buy_price'], row['sell_price'], brewer, row['id'])
+        beer = Beer(row['name'], row['description'], row['style'], row['stock'],
+                    row['buy_price'], row['sell_price'], brewer, row['id'])
         beers.append(beer)
     return beers
+
 
 def select_all_order_by_brewer():
     beers = []
@@ -51,9 +58,11 @@ def select_all_order_by_brewer():
     results = run_sql(sql)
     for row in results:
         brewer = brewer_repository.select(row['brewer_id'])
-        beer = Beer(row['name'], row['description'], row['style'], row['stock'], row['buy_price'], row['sell_price'], brewer, row['id'])
+        beer = Beer(row['name'], row['description'], row['style'], row['stock'],
+                    row['buy_price'], row['sell_price'], brewer, row['id'])
         beers.append(beer)
     return beers
+
 
 def select(id):
     beer = None
@@ -63,8 +72,10 @@ def select(id):
 
     if result is not None:
         brewer = brewer_repository.select(result['brewer_id'])
-        beer = Beer(result['name'], result['description'], result['style'], result['stock'], result['buy_price'], result['sell_price'], brewer, result['id'])
+        beer = Beer(result['name'], result['description'], result['style'], result['stock'],
+                    result['buy_price'], result['sell_price'], brewer, result['id'])
     return beer
+
 
 def select_by_brewer(brewer_id):
     beers = []
@@ -74,22 +85,21 @@ def select_by_brewer(brewer_id):
 
     for row in results:
         brewer = brewer_repository.select(row['brewer_id'])
-        beer = Beer(row['name'], row['description'], row['style'], row['stock'], row['buy_price'], row['sell_price'], brewer, row['id'] )
+        beer = Beer(row['name'], row['description'], row['style'], row['stock'],
+                    row['buy_price'], row['sell_price'], brewer, row['id'])
         beers.append(beer)
     return beers
-
-
 
 
 def delete_all():
     sql = "DELETE FROM beers"
     run_sql(sql)
 
+
 def delete(id):
     sql = "DELETE FROM beers WHERE id = %s"
     values = [id]
-    run_sql(sql,values)
-
+    run_sql(sql, values)
 
 
 def select_all_by_brewer(brewer_id):
@@ -100,29 +110,31 @@ def select_all_by_brewer(brewer_id):
 
     for row in results:
         brewer = brewer_repository.select(row['brewer_id'])
-        beer = Beer(row['name'], row['description'], row['style'], row['stock'], row['buy_price'], row['sell_price'], brewer, row['id'])
+        beer = Beer(row['name'], row['description'], row['style'], row['stock'],
+                    row['buy_price'], row['sell_price'], brewer, row['id'])
         beers.append(beer)
     return beers
 
 
-
-
 def update(beer):
     sql = "UPDATE beers SET (name, description, style, stock, buy_price, sell_price, brewer_id) = (%s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
-    values = [beer.name, beer.description, beer.style, beer.stock, beer.buy_price,beer.sell_price, beer.brewer.id, beer.id]
+    values = [beer.name, beer.description, beer.style, beer.stock,
+              beer.buy_price, beer.sell_price, beer.brewer.id, beer.id]
     run_sql(sql, values)
+
 
 def total_value():
     value = 0
-    sql= "SELECT SUM(sell_price * stock) FROM beers"
+    sql = "SELECT SUM(sell_price * stock) FROM beers"
     value = run_sql(sql)
     stripped_num = int(value[0][0])
     final_total = '{:.2f}'.format(round(stripped_num, 2))
     return stripped_num
 
+
 def total_cost():
     value = 0
-    sql= "SELECT SUM(buy_price * stock) FROM beers"
+    sql = "SELECT SUM(buy_price * stock) FROM beers"
     value = run_sql(sql)
     stripped_num = int(value[0][0])
     final_total = '{:.2f}'.format(round(stripped_num, 2))
