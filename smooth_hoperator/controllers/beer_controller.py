@@ -80,8 +80,13 @@ def add_new_beer():
 @beer_blueprint.route('/stock')
 def stock():
     beers = beer_repository.select_all()
-    total_value = beer_repository.total_value()
-    return render_template('beers/index.html', all_beers = beers, total_value = total_value)
+    total_value = int(beer_repository.total_value())
+    total_cost = int(beer_repository.total_cost())
+    final_total_value = '{:.2f}'.format(round(total_value, 2))
+    final_total_cost = '{:.2f}'.format(round(total_cost, 2))
+    total_profit = total_value - total_cost
+    final_total_profit = '{:.2f}'.format(round(total_profit ,2))
+    return render_template('beers/index.html', all_beers = beers, total_value = final_total_value, total_cost = final_total_cost, total_profit = final_total_profit)
 
 @beer_blueprint.route('/beers/<id>/edit', methods=['GET'])
 def edit_beer(id):
