@@ -9,11 +9,19 @@ beer_blueprint = Blueprint('beer', __name__)
 
 
 # Page with all beers in the DB lists. In stock or otherwise. Base for Beer Management Page.
-@beer_blueprint.route('/beers')
+@beer_blueprint.route('/beers', methods = ['GET'])
 def beers():
     beers = beer_repository.select_all()
     brewers = brewer_repository.select_all()
     return render_template('beers/stock.html', all_beers = beers, all_brewers=brewers)
+
+# Filter beers by brewer.
+@beer_blueprint.route('/beers', methods = ['POST'])
+def test():
+    beers = beer_repository.select_all()
+    brewers = brewer_repository.select_all()
+    brewer  = brewer_repository.select(request.form['brewer_id'])
+    return render_template('beers/test.html', all_beers = beers, all_brewers=brewers, brewer=brewer)
 
 @beer_blueprint.route('/beers/name')
 def beers_by_name():
@@ -47,7 +55,8 @@ def new_beer():
     brewers = brewer_repository.select_all()
     return render_template("beers/new.html" ,all_brewers = brewers, all_beers = beers)
 
-@beer_blueprint.route('/beers', methods = ["POST"])
+# HERE
+@beer_blueprint.route('/beers/new', methods = ["POST"])
 def add_new_beer():
     name    = request.form['name']
     description = request.form['description']
