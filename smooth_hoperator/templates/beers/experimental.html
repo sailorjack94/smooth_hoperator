@@ -1,6 +1,70 @@
-{%extends 'base.html'%}
-{%block content%}
+{% extends 'base.html' %}
+{% block content %}
 
-TEST - {{brewer.name}}
+<nav style="text-align:left" class='sort-by-selector'>
+    <h4>Sort By: </h4>
+    <ul class='sort-by'>
+        <li><a href="/beers/name">Name</a></li><br>
+        <li><a href="/beers/brewer">Brewery</a></li><br>
+        <li><a href="/beers/cost">Cost</a></li><br>
+        <li><a href="/beers/stock">Stock Level</a></li>
+    </ul>
+</nav>
+
+
+<form action="/beers" method="post">
+<div style="text-align:center;">
+    <label for="brewer_id">Filter by Brewer: </label>
+    <select id="brewer_id" name="brewer_id">
+        {% for brewer in all_brewers %}
+        <option value="{{ brewer.id }}">{{ brewer.name }}</option>
+        {% endfor %}
+    </select><br><br>
+    <button type="submit">Apply Filter</button>
+</div>
+</form>
+
+
+<div>
+  <p style="text-align:center">Click on a Beer to update Stock, or Sell Price.</p>
+  
+</div>
+
+{% for beer in all_beers %}
+<section class='inventory-section'>
+    <div class='inventory-container'>
+        <a href="/beers/{{beer.id}}/edit">{{beer.name}}</a>
+        <div>
+            <b>Name:</b>{{beer.name}}
+        </div>
+        <div>
+            <img class='beer-bottle' src="{{url_for('static', filename='coolbottle.png')}}" alt="beer-bottle">
+        </div>
+        <div>
+            <b>Brewer:</b> {{beer.brewer.name}}
+        </div>
+        <div>
+            <b>Sell Price:</b> {{beer.sell_price}}
+        </div>
+
+        <div>
+            <b>Stock Level:</b> {{beer.stock}}
+            {% if beer.stock >3 %}
+            <p class ='in-stock'>IN STOCK!</p>
+            {%endif%}
+            {% if beer.stock > 0 and beer.stock <=3 %}
+                <p class ='low-stock'>LOW STOCK WARNING!</p>
+            {% endif %}
+            {%if beer.stock == 0 %}
+                <p class='out-of-stock'>OUT OF STOCK!</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{%endfor%}
+
+
+
 
 {%endblock%}

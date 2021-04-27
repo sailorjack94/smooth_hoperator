@@ -17,11 +17,12 @@ def beers():
 
 # Filter beers by brewer.
 @beer_blueprint.route('/beers', methods = ['POST'])
-def test():
-    beers = beer_repository.select_all()
-    brewers = brewer_repository.select_all()
-    brewer  = brewer_repository.select(request.form['brewer_id'])
-    return render_template('beers/test.html', all_beers = beers, all_brewers=brewers, brewer=brewer)
+def filter_by_brewer():
+    brewer_id  = request.form['brewer_id']
+    brewer = brewer_repository.select(brewer_id)
+    beers = beer_repository.select_by_brewer(brewer_id)
+    all_brewers = brewer_repository.select_all()
+    return render_template('beers/experimental.html', all_beers = beers, brewer=brewer, all_brewers=all_brewers)
 
 @beer_blueprint.route('/beers/name')
 def beers_by_name():
