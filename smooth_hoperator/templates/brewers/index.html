@@ -2,27 +2,29 @@
 {% block content %}
 
 <h3 style="text-align:center"><a href="/brewers/new">Add New Brewer</a></h3>
-<h5 style = 'text-align:center'>Click on a Brewer to see more information and access the edit page.</h5>
+<h5 style='text-align:center'>Click on a Brewer to see more information and access the edit page.</h5>
 
 
 {% for brewer in all_brewers %}
-<div class = 'inventory-container'>
-    <div>
-        <a href="/brewers/{{brewer.id}}">{{brewer.name}}</a>
+<section class="inventory-section">
+    <div class='inventory-container'>
         <div>
-            <b>Name:</b> {{brewer.name}}
-        </div>
-        <div>
-            <b>Description:</b> {{brewer.description}}
-        </div>
-        <br>
-        <br>
-        <div>
-            <a href="/brewers/{{brewer.id}}/edit">Edit Brewer</a>
+            <a href="/brewers/{{brewer.id}}">{{brewer.name}}</a>
+            <div>
+                <b>Name:</b> {{brewer.name}}
+            </div>
+            <div>
+                <b>Description:</b> {{brewer.description}}
+            </div>
+            <br>
+            <br>
+            <div>
+                <a href="/brewers/{{brewer.id}}/edit">Edit Brewer</a>
             </div>
 
+        </div>
     </div>
-</div>
+</section>
 
 {%endfor%}
 

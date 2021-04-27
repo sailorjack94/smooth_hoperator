@@ -34,6 +34,7 @@ ul.sort-by {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
+    border: 2px solid black;
 }
 
 .inventory-container {
@@ -67,4 +68,50 @@ p.in-stock {
 
 form.new-beer-form {
     text-align: center;
+}
+
+a.nav-button {
+    background-color: darkgreen;
+    box-shadow: 0 5px 0 black;
+    color: white;
+    padding: 0.5em 1em;
+    position: relative;
+    text-decoration: none;
+  }
+
+  a:hover {
+    cursor: pointer;
+  }
+
+.delete {
+        border: 2px solid black;
+        background-color: white;
+        color: black;
+        padding: 14px 28px;
+        cursor: pointer;
+}
+
+.beer {
+    border-color: #ff9800;
+    color: orange;
+  }
+
+.beer:hover {
+    background: #ff9800;
+    color: white;
+  }
+
+.brewer {
+    border-color: #f44336;
+    color: red
+  }
+  
+.brewer:hover {
+    background: #f44336;
+    color: white;
+  }
+
+img.beer-bottle {
+    width:50px;
+    height: auto;
 }

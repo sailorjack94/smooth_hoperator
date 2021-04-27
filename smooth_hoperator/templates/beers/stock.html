@@ -21,7 +21,9 @@
         <div>
             <b>Name:</b>{{beer.name}}
         </div>
-
+        <div>
+            <img class='beer-bottle' src="{{url_for('static', filename='coolbottle.png')}}" alt="beer-bottle">
+        </div>
         <div>
             <b>Brewer:</b> {{beer.brewer.name}}
         </div>
