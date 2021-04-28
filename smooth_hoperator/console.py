@@ -4,8 +4,6 @@ from models.brewer import Brewer
 import repositories.brewer_repository as brewer_repository
 import repositories.beer_repository as beer_repository
 
-
-pdb.set_trace()
 brewer_repository.delete_all()
 beer_repository.delete_all()
 
