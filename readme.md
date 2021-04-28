@@ -51,8 +51,7 @@ Once the above commands have been executed, open a browser window to 127.0.0.1:5
 
 ### Home Page
 
-![Home Page]
-(https://github.com/sailorjack94/smooth_hoperator/blob/main/Smooth_Hoperator_Diagrams_Planning/README%20Screenshots/Screenshot%202021-04-28%20at%2009.53.54.png)
+![Home Page](https://github.com/sailorjack94/smooth_hoperator/blob/main/Smooth_Hoperator_Diagrams_Planning/README%20Screenshots/Screenshot%202021-04-28%20at%2009.53.54.png)
 
 
 ### Beer Listing
