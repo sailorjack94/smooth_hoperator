@@ -56,9 +56,13 @@ Once the above commands have been executed, open a browser window to 127.0.0.1:5
 
 ### Beer Listing
 
+![Beer Listing](https://github.com/sailorjack94/smooth_hoperator/blob/main/Smooth_Hoperator_Diagrams_Planning/README%20Screenshots/Screenshot%202021-04-28%20at%2009.54.18.png)
+
 
 ### Beer Management/Detail
 
+[!Beer Management](https://github.com/sailorjack94/smooth_hoperator/blob/main/Smooth_Hoperator_Diagrams_Planning/README%20Screenshots/Screenshot%202021-04-28%20at%2009.54.35.png)
 
 ### Brewer Management/Detail
 
+[!Brewery Management](https://github.com/sailorjack94/smooth_hoperator/blob/main/Smooth_Hoperator_Diagrams_Planning/README%20Screenshots/Screenshot%202021-04-28%20at%2009.54.47.png)
