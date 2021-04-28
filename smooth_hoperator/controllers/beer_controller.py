@@ -95,7 +95,8 @@ def stock():
     final_total_cost = '{:.2f}'.format(round(total_cost, 2))
     total_profit = total_value - total_cost
     final_total_profit = '{:.2f}'.format(round(total_profit, 2))
-    return render_template('beers/index.html', all_beers=beers, total_value=final_total_value, total_cost=final_total_cost, total_profit=final_total_profit)
+    return render_template('beers/index.html', all_beers=beers, total_value=final_total_value, 
+    total_cost=final_total_cost, total_profit=final_total_profit)
 
 
 @beer_blueprint.route('/beers/<id>/edit', methods=['GET'])

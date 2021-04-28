@@ -128,7 +128,7 @@ def total_value():
     sql = "SELECT SUM(sell_price * stock) FROM beers"
     value = run_sql(sql)
     stripped_num = int(value[0][0])
-    final_total = '{:.2f}'.format(round(stripped_num, 2))
+    # final_total = '{:.2f}'.format(round(stripped_num, 2))
     return stripped_num
 
 
@@ -137,5 +137,5 @@ def total_cost():
     sql = "SELECT SUM(buy_price * stock) FROM beers"
     value = run_sql(sql)
     stripped_num = int(value[0][0])
-    final_total = '{:.2f}'.format(round(stripped_num, 2))
+    # final_total = '{:.2f}'.format(round(stripped_num, 2))
     return stripped_num
