@@ -75,6 +75,7 @@ def add_new_beer():
     stock = request.form['stock']
     buy_price = request.form['buy_price']
     sell_price = request.form['sell_price']
+    img_url = request.form['img_url']
     brewer = brewer_repository.select(request.form['brewer_id'])
     beer = Beer(name, description, style, stock, buy_price, sell_price, brewer)
     beer_repository.save(beer)
@@ -119,7 +120,7 @@ def update_beer(id):
     beer = Beer(name, description, style, stock,
                 buy_price, sell_price, brewer, int(id))
     beer_repository.update(beer)
-    return redirect('/stock')
+    return redirect('/beers')
 
 
 @beer_blueprint.route('/beers/<id>/delete', methods=["POST"])

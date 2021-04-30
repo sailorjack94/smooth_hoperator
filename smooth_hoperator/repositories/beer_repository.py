@@ -6,9 +6,9 @@ import pdb
 
 
 def save(beer):
-    sql = "INSERT INTO beers (name, description, style, stock,  buy_price, sell_price, brewer_id) VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING *"
+    sql = "INSERT INTO beers (name, description, style, stock,  buy_price, sell_price, img_url, brewer_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s) RETURNING *"
     values = [beer.name, beer.description, beer.style, beer.stock,
-              beer.buy_price, beer.sell_price, beer.brewer.id]
+              beer.buy_price, beer.sell_price, beer.img_url, beer.brewer.id]
     results = run_sql(sql, values)
     id = results[0]['id']
     beer.id = id
@@ -23,7 +23,7 @@ def select_all():
     for row in results:
         brewer = brewer_repository.select(row['brewer_id'])
         beer = Beer(row['name'], row['description'], row['style'], row['stock'],
-                    row['buy_price'], row['sell_price'], brewer, row['id'])
+                    row['buy_price'], row['sell_price'], row['img_url'], brewer, row['id'])
         beers.append(beer)
     return beers
 
@@ -94,6 +94,12 @@ def select_by_brewer(brewer_id):
 def delete_all():
     sql = "DELETE FROM beers"
     run_sql(sql)
+
+
+# function delete all:
+    # define sql query to delete all from table beers_by_name
+    # call runsql function with sql query as input
+
 
 
 def delete(id):

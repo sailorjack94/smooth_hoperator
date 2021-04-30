@@ -16,5 +16,6 @@ CREATE TABLE beers (
     stock INT,
     buy_price FLOAT,
     sell_price FLOAT,
+    img_url VARCHAR(255),
     brewer_id INT REFERENCES brewers(id) ON DELETE CASCADE
 );
